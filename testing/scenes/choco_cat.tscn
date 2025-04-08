@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://16sqyldc6m83"]
+
+[ext_resource type="Script" path="res://scripts/choco_cat_accel.gd" id="1_b24fu"]
+[ext_resource type="Texture2D" uid="uid://bicvtlfx6tsbw" path="res://assets/character/char_1.PNG" id="2_roph3"]
+[ext_resource type="Texture2D" uid="uid://2f1ymyigthnu" path="res://assets/character/char_2.PNG" id="3_ld27l"]
+[ext_resource type="Texture2D" uid="uid://d0gr88jst5gph" path="res://assets/character/char_3.PNG" id="4_12ch4"]
+[ext_resource type="Texture2D" uid="uid://bq74sqnt1srbs" path="res://assets/character/char_4.PNG" id="5_jllpw"]
+[ext_resource type="Texture2D" uid="uid://c4q0efrh1oj1r" path="res://assets/character/char_5.PNG" id="6_uge75"]
+[ext_resource type="Texture2D" uid="uid://d2m8cbpjnitps" path="res://assets/character/trophy.png" id="7_18uej"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6icjn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_roph3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ld27l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_12ch4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jllpw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_uge75")
+}],
+"loop": true,
+"name": &"moving",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wi0sy"]
+size = Vector2(224, 71)
+
+[node name="chocoCat" type="CharacterBody2D"]
+z_index = 1
+y_sort_enabled = true
+script = ExtResource("1_b24fu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, -128)
+sprite_frames = SubResource("SpriteFrames_6icjn")
+animation = &"idle"
+autoplay = "moving"
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+offset_left = -111.0
+offset_top = -154.0
+offset_right = 119.0
+offset_bottom = -8.0
+editor_only = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, -48.5)
+shape = SubResource("RectangleShape2D_wi0sy")
+
+[node name="trophy hat" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(4, -296)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_18uej")

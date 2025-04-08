@@ -1,0 +1,494 @@
+[gd_scene load_steps=41 format=3 uid="uid://04wq4ofdaufj"]
+
+[ext_resource type="Script" path="res://scripts/npc.gd" id="1_ymwwh"]
+[ext_resource type="Texture2D" uid="uid://dowg60w8ujktc" path="res://assets/interactKeys.png" id="1_yw3d4"]
+[ext_resource type="Texture2D" uid="uid://6ggn1yigld3x" path="res://assets/character/npc.PNG" id="2_y80ax"]
+[ext_resource type="PackedScene" uid="uid://dupuh8cumos1" path="res://scenes/interact_detection.tscn" id="5_8rqqb"]
+[ext_resource type="PackedScene" uid="uid://cehamqwyw84uy" path="res://scenes/dialogue.tscn" id="5_kkisf"]
+[ext_resource type="Texture2D" uid="uid://dv4h8dij22e7f" path="res://assets/story_items/bag.PNG" id="6_karlo"]
+[ext_resource type="Texture2D" uid="uid://dau1bpexeyqt1" path="res://assets/story_items/mag_lens.png" id="6_v61qh"]
+[ext_resource type="Texture2D" uid="uid://da3p025jlvg06" path="res://assets/story_items/char_conf.png" id="8_gapy7"]
+[ext_resource type="Texture2D" uid="uid://dc7vnhvi1bbex" path="res://assets/story_items/beret.PNG" id="9_tnhpi"]
+[ext_resource type="Texture2D" uid="uid://rn680kawsmuw" path="res://assets/story_items/boba.PNG" id="10_djm1v"]
+[ext_resource type="Texture2D" uid="uid://t0atnvsof1q1" path="res://assets/story_items/cake.PNG" id="11_7ivb0"]
+[ext_resource type="Texture2D" uid="uid://17f45jb12327" path="res://assets/story_items/doll.PNG" id="12_hqgte"]
+[ext_resource type="Texture2D" uid="uid://c52kuh8sgfcgb" path="res://assets/story_items/choco.PNG" id="13_d0175"]
+[ext_resource type="Texture2D" uid="uid://bru38sk54omt6" path="res://assets/story_items/chips.PNG" id="14_32w2d"]
+[ext_resource type="Texture2D" uid="uid://c2bi3rxp6y33j" path="res://assets/story_items/carton.PNG" id="15_uglqr"]
+[ext_resource type="Texture2D" uid="uid://tdljxnuhv107" path="res://assets/story_items/flower.PNG" id="16_u5dh3"]
+[ext_resource type="Texture2D" uid="uid://bif5p00fct082" path="res://assets/story_items/pudding.PNG" id="17_kl1sm"]
+[ext_resource type="Texture2D" uid="uid://bh2b5ft3qmx32" path="res://assets/story_items/stars.PNG" id="18_irfsp"]
+[ext_resource type="Texture2D" uid="uid://c3h2yq3slpmu2" path="res://assets/story_items/succulent.PNG" id="19_6eas7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8og5f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_y80ax")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kso5y"]
+size = Vector2(103.976, 63.0125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpvsx"]
+atlas = ExtResource("1_yw3d4")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqg51"]
+atlas = ExtResource("1_yw3d4")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8iam5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpvsx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqg51")
+}],
+"loop": true,
+"name": &"click",
+"speed": 2.5
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rd1e"]
+atlas = ExtResource("1_yw3d4")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppt68"]
+atlas = ExtResource("1_yw3d4")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5t81p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rd1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppt68")
+}],
+"loop": true,
+"name": &"click",
+"speed": 2.5
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fyrwv"]
+radius = 268.047
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_khh24"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_v61qh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_karlo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_gapy7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3j2o7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_v61qh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tnhpi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_gapy7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_epvcn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_v61qh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_djm1v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_gapy7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0dhdf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_v61qh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7ivb0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_gapy7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_47fmu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_v61qh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_uglqr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_gapy7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cfkot"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_v61qh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_32w2d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_gapy7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vmyc7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_v61qh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_d0175")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_gapy7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g40s3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_v61qh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_hqgte")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_gapy7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t73mn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_v61qh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_u5dh3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_gapy7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4x28a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_v61qh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_kl1sm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_gapy7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rrcub"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_v61qh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_irfsp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_gapy7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ekgpo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_v61qh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_6eas7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_gapy7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="npc" type="CharacterBody2D"]
+position = Vector2(82, -171)
+script = ExtResource("1_ymwwh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.90735e-06, -2)
+rotation = 0.00703092
+sprite_frames = SubResource("SpriteFrames_8og5f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-32, 1123)
+rotation = 0.00703092
+shape = SubResource("RectangleShape2D_kso5y")
+
+[node name="prompts" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-10, -207)
+
+[node name="interact keys (space)" type="AnimatedSprite2D" parent="prompts"]
+position = Vector2(-74, 0)
+sprite_frames = SubResource("SpriteFrames_8iam5")
+animation = &"click"
+autoplay = "click"
+
+[node name="interact keys (click)" type="AnimatedSprite2D" parent="prompts"]
+position = Vector2(81, 0)
+sprite_frames = SubResource("SpriteFrames_5t81p")
+animation = &"click"
+autoplay = "click"
+
+[node name="interact_detection" parent="." instance=ExtResource("5_8rqqb")]
+scene_name = "world"
+node_name = "npc"
+
+[node name="CollisionShape2D" parent="interact_detection" index="0"]
+shape = SubResource("CircleShape2D_fyrwv")
+
+[node name="dialogue" parent="." instance=ExtResource("5_kkisf")]
+npcName = "testing"
+npcMain = true
+npcDialogueID = [1, 2]
+charDialogueID = [3]
+
+[node name="images" parent="dialogue/visible" index="3"]
+position = Vector2(-4, -26)
+scale = Vector2(1.19531, 1.19531)
+sprite_frames = SubResource("SpriteFrames_khh24")
+
+[node name="dialogue2" parent="." instance=ExtResource("5_kkisf")]
+npcName = "testing"
+npcMain = true
+npcDialogueNumber = 1
+npcDialogueID = [1, 2]
+charDialogueID = [3]
+
+[node name="images" parent="dialogue2/visible" index="3"]
+position = Vector2(-4, -26)
+scale = Vector2(1.19531, 1.19531)
+sprite_frames = SubResource("SpriteFrames_3j2o7")
+
+[node name="dialogue3" parent="." instance=ExtResource("5_kkisf")]
+npcName = "testing"
+npcMain = true
+npcDialogueNumber = 2
+npcDialogueID = [1, 2]
+charDialogueID = [3]
+
+[node name="images" parent="dialogue3/visible" index="3"]
+position = Vector2(-4, -26)
+scale = Vector2(1.19531, 1.19531)
+sprite_frames = SubResource("SpriteFrames_epvcn")
+
+[node name="dialogue4" parent="." instance=ExtResource("5_kkisf")]
+npcName = "testing"
+npcMain = true
+npcDialogueNumber = 3
+npcDialogueID = [1, 2]
+charDialogueID = [3]
+
+[node name="images" parent="dialogue4/visible" index="3"]
+position = Vector2(146, 475)
+scale = Vector2(1.19531, 1.19531)
+sprite_frames = SubResource("SpriteFrames_0dhdf")
+offset = Vector2(-125.49, -419.137)
+
+[node name="dialogue5" parent="." instance=ExtResource("5_kkisf")]
+npcName = "testing"
+npcMain = true
+npcDialogueNumber = 4
+npcDialogueID = [1, 2]
+charDialogueID = [3]
+
+[node name="images" parent="dialogue5/visible" index="3"]
+position = Vector2(-4, -26)
+scale = Vector2(1.19531, 1.19531)
+sprite_frames = SubResource("SpriteFrames_47fmu")
+
+[node name="dialogue6" parent="." instance=ExtResource("5_kkisf")]
+npcName = "testing"
+npcMain = true
+npcDialogueNumber = 5
+npcDialogueID = [1, 2]
+charDialogueID = [3]
+
+[node name="images" parent="dialogue6/visible" index="3"]
+position = Vector2(-4, -26)
+scale = Vector2(1.19531, 1.19531)
+sprite_frames = SubResource("SpriteFrames_cfkot")
+
+[node name="dialogue7" parent="." instance=ExtResource("5_kkisf")]
+npcName = "testing"
+npcMain = true
+npcDialogueNumber = 6
+npcDialogueID = [1, 2]
+charDialogueID = [3]
+
+[node name="images" parent="dialogue7/visible" index="3"]
+position = Vector2(-4, -26)
+scale = Vector2(1.19531, 1.19531)
+sprite_frames = SubResource("SpriteFrames_vmyc7")
+
+[node name="dialogue8" parent="." instance=ExtResource("5_kkisf")]
+npcName = "testing"
+npcMain = true
+npcDialogueNumber = 7
+npcDialogueID = [1, 2]
+charDialogueID = [3]
+
+[node name="images" parent="dialogue8/visible" index="3"]
+position = Vector2(-4, -26)
+scale = Vector2(1.19531, 1.19531)
+sprite_frames = SubResource("SpriteFrames_g40s3")
+
+[node name="dialogue9" parent="." instance=ExtResource("5_kkisf")]
+npcName = "testing"
+npcMain = true
+npcDialogueNumber = 8
+npcDialogueID = [1, 2]
+charDialogueID = [3]
+
+[node name="images" parent="dialogue9/visible" index="3"]
+position = Vector2(-4, -26)
+scale = Vector2(1.19531, 1.19531)
+sprite_frames = SubResource("SpriteFrames_t73mn")
+
+[node name="dialogue10" parent="." instance=ExtResource("5_kkisf")]
+npcName = "testing"
+npcMain = true
+npcDialogueNumber = 9
+npcDialogueID = [1, 2]
+charDialogueID = [3]
+
+[node name="images" parent="dialogue10/visible" index="3"]
+position = Vector2(-4, -26)
+scale = Vector2(1.19531, 1.19531)
+sprite_frames = SubResource("SpriteFrames_4x28a")
+
+[node name="dialogue11" parent="." instance=ExtResource("5_kkisf")]
+npcName = "testing"
+npcMain = true
+npcDialogueNumber = 10
+npcDialogueID = [1, 2]
+charDialogueID = [3]
+
+[node name="images" parent="dialogue11/visible" index="3"]
+position = Vector2(-4, -26)
+scale = Vector2(1.19531, 1.19531)
+sprite_frames = SubResource("SpriteFrames_rrcub")
+
+[node name="dialogue12" parent="." instance=ExtResource("5_kkisf")]
+npcName = "testing"
+npcMain = true
+npcDialogueNumber = 11
+npcDialogueID = [1, 2]
+charDialogueID = [3]
+
+[node name="images" parent="dialogue12/visible" index="3"]
+position = Vector2(-4, -26)
+scale = Vector2(1.19531, 1.19531)
+sprite_frames = SubResource("SpriteFrames_ekgpo")
+
+[connection signal="interactChar" from="." to="." method="_on_interact_char"]
+[connection signal="interactChar" from="." to="dialogue" method="_on_npc_interact_char"]
+[connection signal="interactChar" from="." to="dialogue2" method="_on_npc_interact_char"]
+[connection signal="interactChar" from="." to="dialogue3" method="_on_npc_interact_char"]
+[connection signal="interactChar" from="." to="dialogue4" method="_on_npc_interact_char"]
+[connection signal="interactChar" from="." to="dialogue5" method="_on_npc_interact_char"]
+[connection signal="interactChar" from="." to="dialogue6" method="_on_npc_interact_char"]
+[connection signal="interactChar" from="." to="dialogue7" method="_on_npc_interact_char"]
+[connection signal="interactChar" from="." to="dialogue8" method="_on_npc_interact_char"]
+[connection signal="interactChar" from="." to="dialogue9" method="_on_npc_interact_char"]
+[connection signal="interactChar" from="." to="dialogue10" method="_on_npc_interact_char"]
+[connection signal="interactChar" from="." to="dialogue11" method="_on_npc_interact_char"]
+
+[editable path="interact_detection"]
+[editable path="dialogue"]
+[editable path="dialogue2"]
+[editable path="dialogue3"]
+[editable path="dialogue4"]
+[editable path="dialogue5"]
+[editable path="dialogue6"]
+[editable path="dialogue7"]
+[editable path="dialogue8"]
+[editable path="dialogue9"]
+[editable path="dialogue10"]
+[editable path="dialogue11"]
+[editable path="dialogue12"]

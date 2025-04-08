@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://cncli8jqnn0mk"]
+
+[ext_resource type="Script" path="res://scripts/door.gd" id="1_vxwpx"]
+[ext_resource type="Texture2D" uid="uid://bp3jk5rscekfo" path="res://assets/door.png" id="1_xlcno"]
+[ext_resource type="PackedScene" uid="uid://dupuh8cumos1" path="res://scenes/interact_detection.tscn" id="3_48h8m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7oefp"]
+atlas = ExtResource("1_xlcno")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ko1w4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7oefp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x8cs2"]
+radius = 147.275
+
+[node name="door" type="Area2D"]
+position = Vector2(0, -124)
+script = ExtResource("1_vxwpx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ko1w4")
+frame_progress = 0.443475
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x8cs2")
+
+[node name="spawn" type="Marker2D" parent="."]
+
+[node name="interact_detection" parent="." instance=ExtResource("3_48h8m")]
+scene_name = "door"
+node_name = "door"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+
+[editable path="interact_detection"]

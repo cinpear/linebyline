@@ -1,0 +1,144 @@
+[gd_scene load_steps=18 format=3 uid="uid://cglxdoudqi3t4"]
+
+[ext_resource type="Texture2D" uid="uid://6dvfpo1onx5l" path="res://assets/gacha/gacha_drink.PNG" id="1_t80ji"]
+[ext_resource type="Script" path="res://scripts/gacha_machine.gd" id="2_45avn"]
+[ext_resource type="Texture2D" uid="uid://d06mxq6w6rx4o" path="res://assets/gacha/gacha_closed.PNG" id="2_jsref"]
+[ext_resource type="Texture2D" uid="uid://beki56yt2od8e" path="res://assets/gacha/gacha_open.PNG" id="3_2usdu"]
+[ext_resource type="Texture2D" uid="uid://wommjpims37j" path="res://assets/gacha/gacha_broke.PNG" id="4_676sf"]
+[ext_resource type="SpriteFrames" uid="uid://djebdjk8yvpi7" path="res://assets/gacha/gacha_drink.tres" id="4_rvbf8"]
+[ext_resource type="Texture2D" uid="uid://bu7tbokt38qmj" path="res://assets/gacha/button_no.PNG" id="6_ubsjj"]
+[ext_resource type="Texture2D" uid="uid://dmw7ewt3fnt18" path="res://assets/gacha/button_yes.PNG" id="7_0kyua"]
+[ext_resource type="Texture2D" uid="uid://nysprhs0x0pc" path="res://assets/gacha/button_broke.PNG" id="8_atldp"]
+[ext_resource type="Texture2D" uid="uid://cw6w8s3bqgwig" path="res://assets/gacha/button_again.PNG" id="9_vltap"]
+[ext_resource type="Texture2D" uid="uid://l7ok2gcr4811" path="res://assets/ui/blank_screen.PNG" id="10_3alrx"]
+[ext_resource type="Texture2D" uid="uid://ljjv1o7e4q74" path="res://assets/ui/currency_counter.png" id="11_chdn6"]
+[ext_resource type="FontFile" uid="uid://dqak3lgdjjwcy" path="res://assets/ui/Linebylinefont-Regular.ttf" id="11_vak5p"]
+[ext_resource type="Texture2D" uid="uid://wuj7modheciy" path="res://assets/ui/fish_icon.PNG" id="12_ejf11"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_okmcg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jsref")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2usdu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_676sf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_707b4"]
+texture = ExtResource("10_3alrx")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="Theme" id="Theme_vml3g"]
+Panel/styles/panel = SubResource("StyleBoxTexture_707b4")
+
+[node name="gacha_machine" type="Node2D"]
+script = ExtResource("2_45avn")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="gacha_screen" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(995, 540)
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_okmcg")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 0.151
+anchor_bottom = 0.151
+offset_left = 629.0
+offset_top = 700.0
+offset_right = 1071.08
+offset_bottom = 671.92
+
+[node name="gacha_items" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(995, 475)
+scale = Vector2(0.4, 0.4)
+sprite_frames = ExtResource("4_rvbf8")
+
+[node name="no" type="TextureButton" parent="CanvasLayer"]
+offset_left = 669.0
+offset_top = 717.0
+offset_right = 841.0
+offset_bottom = 812.0
+texture_normal = ExtResource("6_ubsjj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="yes" type="TextureButton" parent="CanvasLayer"]
+offset_left = 1150.0
+offset_top = 719.0
+offset_right = 1322.0
+offset_bottom = 814.0
+texture_normal = ExtResource("7_0kyua")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="broke" type="TextureButton" parent="CanvasLayer"]
+offset_left = 1150.0
+offset_top = 719.0
+offset_right = 1322.0
+offset_bottom = 814.0
+texture_normal = ExtResource("8_atldp")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="again" type="TextureButton" parent="CanvasLayer"]
+offset_left = 669.0
+offset_top = 717.0
+offset_right = 841.0
+offset_bottom = 812.0
+texture_normal = ExtResource("9_vltap")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Panel" type="TextureRect" parent="CanvasLayer"]
+offset_left = 506.0
+offset_top = 76.0
+offset_right = 1156.0
+offset_bottom = 236.0
+scale = Vector2(0.6, 0.6)
+theme = SubResource("Theme_vml3g")
+texture = ExtResource("11_chdn6")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel"]
+layout_mode = 2
+offset_left = 62.0
+offset_top = 1.0
+offset_right = 592.0
+offset_bottom = 158.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("12_ejf11")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.447059, 0.00784314, 0.121569, 1)
+theme_override_fonts/font = ExtResource("11_vak5p")
+theme_override_font_sizes/font_size = 175
+text = " 100"
+vertical_alignment = 1
+
+[node name="machine" type="TextureButton" parent="."]
+offset_right = 161.0
+offset_bottom = 243.0
+texture_normal = ExtResource("1_t80ji")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="pressed" from="CanvasLayer/no" to="." method="_on_no_pressed"]
+[connection signal="pressed" from="CanvasLayer/yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="CanvasLayer/again" to="." method="_on_again_pressed"]
+[connection signal="pressed" from="machine" to="." method="_on_texture_button_pressed"]

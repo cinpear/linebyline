@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjplv0yk14mnu"]
+
+[ext_resource type="Script" path="res://scripts/start.gd" id="1_ncn5r"]
+[ext_resource type="Texture2D" uid="uid://cil5b376q8nk" path="res://assets/ui/start_screen.png" id="2_72vbl"]
+
+[node name="start" type="Node2D"]
+script = ExtResource("1_ncn5r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_72vbl")
+centered = false
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 817.0
+offset_top = 629.0
+offset_right = 1103.0
+offset_bottom = 915.0
+
+[connection signal="button_down" from="TextureButton" to="." method="_on_texture_button_button_down"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

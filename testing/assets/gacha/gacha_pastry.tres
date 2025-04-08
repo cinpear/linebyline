@@ -1,0 +1,42 @@
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://c1i0pr1ck01ur"]
+
+[ext_resource type="Texture2D" uid="uid://dxegu8skfm40x" path="res://assets/gacha/gacha_pastry_bread.PNG" id="1_d7xwb"]
+[ext_resource type="Texture2D" uid="uid://ie4ymdsmp32h" path="res://assets/gacha/gacha_pastry_cake.PNG" id="2_kslqx"]
+[ext_resource type="Texture2D" uid="uid://dbm10maay2y1k" path="res://assets/gacha/gacha_pastry_cinn.PNG" id="3_ltiwa"]
+[ext_resource type="Texture2D" uid="uid://dln2onblvs7xo" path="res://assets/gacha/gacha_pastry_cupcake.PNG" id="4_bxx50"]
+[ext_resource type="Texture2D" uid="uid://dpfjbn38gawdr" path="res://assets/gacha/gacha_pastry_maca.PNG" id="5_n32np"]
+[ext_resource type="Texture2D" uid="uid://dldkgqj2cemam" path="res://assets/gacha/gacha_pastry_melon.PNG" id="6_clcr1"]
+[ext_resource type="Texture2D" uid="uid://rknnhxq7gepk" path="res://assets/gacha/gacha_pastry_mochi.PNG" id="7_nuaax"]
+[ext_resource type="Texture2D" uid="uid://prm155qfqh1v" path="res://assets/gacha/gacha_pastry_quaso.PNG" id="8_1yf2e"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_d7xwb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_kslqx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ltiwa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bxx50")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_n32np")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_clcr1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_nuaax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1yf2e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

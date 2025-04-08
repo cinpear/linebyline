@@ -1,0 +1,79 @@
+[gd_scene load_steps=15 format=3 uid="uid://dbsqd6lkh5mi2"]
+
+[ext_resource type="Script" path="res://scripts/story_item_click.gd" id="1_6ygyg"]
+[ext_resource type="Texture2D" uid="uid://dv4h8dij22e7f" path="res://assets/story_items/bag.PNG" id="2_2qgt7"]
+[ext_resource type="Texture2D" uid="uid://dc7vnhvi1bbex" path="res://assets/story_items/beret.PNG" id="3_5kf5i"]
+[ext_resource type="Texture2D" uid="uid://rn680kawsmuw" path="res://assets/story_items/boba.PNG" id="4_qmg2e"]
+[ext_resource type="Texture2D" uid="uid://t0atnvsof1q1" path="res://assets/story_items/cake.PNG" id="5_3ynk7"]
+[ext_resource type="Texture2D" uid="uid://c2bi3rxp6y33j" path="res://assets/story_items/carton.PNG" id="6_x0psh"]
+[ext_resource type="Texture2D" uid="uid://bru38sk54omt6" path="res://assets/story_items/chips.PNG" id="7_ywbe2"]
+[ext_resource type="Texture2D" uid="uid://c52kuh8sgfcgb" path="res://assets/story_items/choco.PNG" id="8_nsiwg"]
+[ext_resource type="Texture2D" uid="uid://17f45jb12327" path="res://assets/story_items/doll.PNG" id="9_7vok6"]
+[ext_resource type="Texture2D" uid="uid://tdljxnuhv107" path="res://assets/story_items/flower.PNG" id="10_tr2tf"]
+[ext_resource type="Texture2D" uid="uid://bif5p00fct082" path="res://assets/story_items/pudding.PNG" id="11_q7rjx"]
+[ext_resource type="Texture2D" uid="uid://bh2b5ft3qmx32" path="res://assets/story_items/stars.PNG" id="12_08a1c"]
+[ext_resource type="Texture2D" uid="uid://c3h2yq3slpmu2" path="res://assets/story_items/succulent.PNG" id="13_gbwkw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h7s5m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2qgt7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5kf5i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qmg2e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3ynk7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_x0psh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ywbe2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_nsiwg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7vok6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_tr2tf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_q7rjx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_08a1c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_gbwkw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="story_item_click" type="Control"]
+y_sort_enabled = true
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
+script = ExtResource("1_6ygyg")
+
+[node name="item" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_h7s5m")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = -70.0
+offset_top = -68.0
+offset_right = 70.0
+offset_bottom = 72.0
+
+[connection signal="button_down" from="TextureButton" to="." method="_on_texture_button_button_down"]

@@ -1,0 +1,86 @@
+[gd_scene load_steps=10 format=3 uid="uid://cehamqwyw84uy"]
+
+[ext_resource type="Script" path="res://scripts/dialogue.gd" id="1_66t28"]
+[ext_resource type="Texture2D" uid="uid://rjb85gcgy5wc" path="res://assets/blankdialogue.png" id="1_qcfhj"]
+[ext_resource type="Texture2D" uid="uid://debs2w4mnd10p" path="res://assets/sparkle.png" id="3_hk0e6"]
+[ext_resource type="Texture2D" uid="uid://cuvd8w231r5ws" path="res://assets/heart.png" id="4_tv44a"]
+[ext_resource type="Texture2D" uid="uid://cstlorvpqyod4" path="res://assets/uwu.png" id="5_72xqj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ou4tp"]
+radius = 551.023
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5foyl"]
+atlas = ExtResource("1_qcfhj")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4amuj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5foyl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f7ymg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_tv44a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_72xqj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_72xqj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tv44a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_72xqj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="dialogue" type="Node2D"]
+script = ExtResource("1_66t28")
+
+[node name="proximity" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="proximity"]
+shape = SubResource("CircleShape2D_ou4tp")
+
+[node name="ReferenceRect" type="ReferenceRect" parent="proximity"]
+offset_left = -553.0
+offset_top = -550.0
+offset_right = 549.0
+offset_bottom = 551.0
+editor_only = false
+
+[node name="visible" type="Node2D" parent="."]
+
+[node name="chat box" type="AnimatedSprite2D" parent="visible"]
+sprite_frames = SubResource("SpriteFrames_4amuj")
+
+[node name="ReferenceRect" type="ReferenceRect" parent="visible"]
+offset_left = -131.0
+offset_top = -108.0
+offset_right = 134.0
+offset_bottom = 101.0
+editor_only = false
+
+[node name="token_confirmation" type="Sprite2D" parent="visible"]
+position = Vector2(98, 64)
+scale = Vector2(1.3125, 1.32031)
+texture = ExtResource("3_hk0e6")
+
+[node name="images" type="AnimatedSprite2D" parent="visible"]
+sprite_frames = SubResource("SpriteFrames_f7ymg")
+
+[connection signal="body_entered" from="proximity" to="." method="_on_proximity_body_entered"]
+[connection signal="body_exited" from="proximity" to="." method="_on_proximity_body_exited"]

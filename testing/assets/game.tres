@@ -1,0 +1,15 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://c13h5hlhoora2"]
+
+[ext_resource type="Texture2D" uid="uid://dqdrlgfonr2ti" path="res://assets/jank256.png" id="1_uprwc"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f04dc"]
+texture = ExtResource("1_uprwc")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -64)
+
+[resource]
+tile_shape = 1
+tile_layout = 5
+tile_size = Vector2i(256, 128)
+sources/1 = SubResource("TileSetAtlasSource_f04dc")

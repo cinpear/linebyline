@@ -1,0 +1,284 @@
+[gd_scene load_steps=32 format=3 uid="uid://be7fyvpsrsts4"]
+
+[ext_resource type="Script" path="res://scripts/sketchbook.gd" id="1_41siu"]
+[ext_resource type="Texture2D" uid="uid://b8osat3eedi0g" path="res://assets/sketchbook/sketch_layout.PNG" id="1_a2vqn"]
+[ext_resource type="Texture2D" uid="uid://bfj2wrusbd4vx" path="res://assets/sketchbook/sketch_red.PNG" id="2_828ky"]
+[ext_resource type="Texture2D" uid="uid://c3ap057yq0ek4" path="res://assets/sketchbook/sketch_yellow.PNG" id="3_8pjtc"]
+[ext_resource type="Texture2D" uid="uid://da4jy4y6s27f8" path="res://assets/sketchbook/sketch_blue.PNG" id="4_jt3sl"]
+[ext_resource type="Texture2D" uid="uid://bpyqj1jw08i0l" path="res://assets/sketchbook/sketch_colorpicker.PNG" id="5_k8wwe"]
+[ext_resource type="Texture2D" uid="uid://clhrredly0app" path="res://assets/sketchbook/sketch_eraser.PNG" id="6_ya25l"]
+[ext_resource type="Texture2D" uid="uid://bcwdrddhvojp4" path="res://assets/sketchbook/sketch_check.PNG" id="7_nqals"]
+[ext_resource type="Texture2D" uid="uid://q5lbv54u4d7r" path="res://assets/sketchbook/brush_panel_offwhite.png" id="8_4u7xa"]
+[ext_resource type="Texture2D" uid="uid://di6qeuivsocif" path="res://assets/sketchbook/brush_sizes_only.png" id="9_2uwko"]
+[ext_resource type="Texture2D" uid="uid://08wepy1wtime" path="res://assets/sketchbook/sketch_back.PNG" id="10_dxyvp"]
+[ext_resource type="Texture2D" uid="uid://dgu0jqxgadwlq" path="res://assets/sketchbook/sketch_paper.PNG" id="11_hvd0x"]
+[ext_resource type="Texture2D" uid="uid://daebf7biml3av" path="res://assets/sketchbook/sketch_tape_top.PNG" id="12_8naex"]
+[ext_resource type="Script" path="res://scripts/drawing.gd" id="12_e04ba"]
+[ext_resource type="Texture2D" uid="uid://c21wgx1i44bi" path="res://assets/story_items/bag_clear.png" id="13_6hli2"]
+[ext_resource type="Texture2D" uid="uid://8c2rfthrcvuo" path="res://assets/sketchbook/sketch_tape_bottom.PNG" id="13_m2c7i"]
+[ext_resource type="Texture2D" uid="uid://ctagxsfew37em" path="res://assets/sketchbook/pad_frame.png" id="13_mhwmy"]
+[ext_resource type="Texture2D" uid="uid://dn06w3vqj1eae" path="res://assets/story_items/beret_clear.png" id="14_30ok3"]
+[ext_resource type="Texture2D" uid="uid://bi1xwdch56cvl" path="res://assets/sketchbook/sketch_postit.PNG" id="14_sou03"]
+[ext_resource type="Texture2D" uid="uid://b6hpil0gjd7oo" path="res://assets/story_items/boba_clear.png" id="15_qofli"]
+[ext_resource type="Texture2D" uid="uid://d1i8423rldm5q" path="res://assets/story_items/cake_clear.png" id="16_0vqwp"]
+[ext_resource type="Texture2D" uid="uid://257m6p5h4yus" path="res://assets/story_items/carton_clear.png" id="17_0dedh"]
+[ext_resource type="Texture2D" uid="uid://bayvmv2f1j0wc" path="res://assets/story_items/chips_clear.png" id="18_yru8f"]
+[ext_resource type="Texture2D" uid="uid://divupueimc4ra" path="res://assets/story_items/choco_clear.png" id="19_aalb2"]
+[ext_resource type="Texture2D" uid="uid://c4ckc7ukrtsui" path="res://assets/story_items/doll_clear.png" id="20_nf4l1"]
+[ext_resource type="Texture2D" uid="uid://pfarpuurcci1" path="res://assets/story_items/flower_clear.png" id="21_ib5mm"]
+[ext_resource type="Texture2D" uid="uid://drclp03t0hhm8" path="res://assets/story_items/pudding_clear.png" id="22_lq4pq"]
+[ext_resource type="Texture2D" uid="uid://wl7rdgfvuna3" path="res://assets/story_items/stars_clear.png" id="23_6m51u"]
+[ext_resource type="Texture2D" uid="uid://bov5vpkgcobkb" path="res://assets/story_items/succulent_clear.png" id="24_0pnok"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tnmub"]
+size = Vector2(560, 685)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j4ck5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_6hli2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_30ok3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_qofli")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_0vqwp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_0dedh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_yru8f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_aalb2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_nf4l1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_ib5mm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_lq4pq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_6m51u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_0pnok")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="sketchbook" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_41siu")
+
+[node name="layout" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+texture = ExtResource("1_a2vqn")
+expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1957.0
+offset_bottom = 1127.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.392157)
+
+[node name="colors" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 1300.0
+offset_top = 160.0
+offset_right = 1416.0
+offset_bottom = 945.0
+
+[node name="red" type="TextureButton" parent="colors"]
+custom_minimum_size = Vector2(116.25, 116.25)
+layout_mode = 2
+size_flags_vertical = 6
+texture_normal = ExtResource("2_828ky")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="yellow" type="TextureButton" parent="colors"]
+custom_minimum_size = Vector2(116.25, 116.25)
+layout_mode = 2
+size_flags_vertical = 6
+texture_normal = ExtResource("3_8pjtc")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="blue" type="TextureButton" parent="colors"]
+custom_minimum_size = Vector2(116.25, 116.25)
+layout_mode = 2
+size_flags_vertical = 6
+texture_normal = ExtResource("4_jt3sl")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="colorpicker" type="TextureButton" parent="colors"]
+custom_minimum_size = Vector2(116.25, 116.25)
+layout_mode = 2
+size_flags_vertical = 6
+texture_normal = ExtResource("5_k8wwe")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="eraser" type="TextureButton" parent="colors"]
+custom_minimum_size = Vector2(116.25, 116.25)
+layout_mode = 2
+size_flags_vertical = 6
+texture_normal = ExtResource("6_ya25l")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="check" type="TextureButton" parent="colors"]
+custom_minimum_size = Vector2(116.25, 116.25)
+layout_mode = 2
+size_flags_vertical = 6
+texture_normal = ExtResource("7_nqals")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="brush_size_buttons" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="brush_panel" type="Sprite2D" parent="brush_size_buttons"]
+position = Vector2(489.75, 540)
+scale = Vector2(0.753572, 0.75)
+texture = ExtResource("8_4u7xa")
+
+[node name="brush_sizes" type="Sprite2D" parent="brush_size_buttons"]
+position = Vector2(489.75, 540)
+scale = Vector2(0.753572, 0.75)
+texture = ExtResource("9_2uwko")
+
+[node name="1" type="TextureButton" parent="brush_size_buttons"]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 300.0
+offset_right = 520.0
+offset_bottom = 360.0
+
+[node name="2" type="TextureButton" parent="brush_size_buttons"]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 360.0
+offset_right = 520.0
+offset_bottom = 420.0
+
+[node name="3" type="TextureButton" parent="brush_size_buttons"]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 428.0
+offset_right = 520.0
+offset_bottom = 488.0
+
+[node name="4" type="TextureButton" parent="brush_size_buttons"]
+layout_mode = 0
+offset_left = 455.0
+offset_top = 500.0
+offset_right = 525.0
+offset_bottom = 570.0
+
+[node name="5" type="TextureButton" parent="brush_size_buttons"]
+layout_mode = 0
+offset_left = 455.0
+offset_top = 585.0
+offset_right = 525.0
+offset_bottom = 655.0
+
+[node name="6" type="TextureButton" parent="brush_size_buttons"]
+layout_mode = 0
+offset_left = 455.0
+offset_top = 686.0
+offset_right = 525.0
+offset_bottom = 756.0
+
+[node name="pad" type="Node2D" parent="."]
+
+[node name="back" type="Sprite2D" parent="pad"]
+position = Vector2(921, 551)
+scale = Vector2(0.748235, 0.748571)
+texture = ExtResource("10_dxyvp")
+
+[node name="paper" type="Sprite2D" parent="pad"]
+position = Vector2(921, 557)
+scale = Vector2(0.749296, 0.749133)
+texture = ExtResource("11_hvd0x")
+
+[node name="Area2D" type="Area2D" parent="pad"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pad/Area2D"]
+position = Vector2(922, 554.5)
+shape = SubResource("RectangleShape2D_tnmub")
+
+[node name="drawing" type="Node2D" parent="pad"]
+script = ExtResource("12_e04ba")
+
+[node name="lines" type="AnimatedSprite2D" parent="pad"]
+position = Vector2(921, 557)
+scale = Vector2(0.749, 0.749)
+sprite_frames = SubResource("SpriteFrames_j4ck5")
+frame = 3
+
+[node name="frame" type="Sprite2D" parent="pad"]
+position = Vector2(921, 551)
+scale = Vector2(0.748235, 0.748571)
+texture = ExtResource("13_mhwmy")
+
+[node name="tape_top" type="Sprite2D" parent="pad"]
+position = Vector2(724, 300)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("12_8naex")
+
+[node name="tape_bottom" type="Sprite2D" parent="pad"]
+position = Vector2(1140, 821)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("13_m2c7i")
+
+[node name="postit" type="Sprite2D" parent="pad"]
+position = Vector2(1128, 303)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("14_sou03")
+
+[node name="Sprite2D" type="Sprite2D" parent="pad"]
+visible = false
+position = Vector2(934, 558)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("9_2uwko")
+
+[connection signal="pressed" from="colors/red" to="pad/drawing" method="_on_red_pressed"]
+[connection signal="pressed" from="colors/yellow" to="pad/drawing" method="_on_yellow_pressed"]
+[connection signal="pressed" from="colors/blue" to="pad/drawing" method="_on_blue_pressed"]
+[connection signal="pressed" from="colors/eraser" to="pad/drawing" method="_on_eraser_pressed"]
+[connection signal="pressed" from="colors/check" to="." method="_on_check_pressed"]
+[connection signal="pressed" from="colors/check" to="pad/drawing" method="_on_check_pressed"]
+[connection signal="pressed" from="brush_size_buttons/1" to="pad/drawing" method="_on_1_pressed"]
+[connection signal="pressed" from="brush_size_buttons/2" to="pad/drawing" method="_on_2_pressed"]
+[connection signal="pressed" from="brush_size_buttons/3" to="pad/drawing" method="_on_3_pressed"]
+[connection signal="pressed" from="brush_size_buttons/4" to="pad/drawing" method="_on_4_pressed"]
+[connection signal="pressed" from="brush_size_buttons/5" to="pad/drawing" method="_on_5_pressed"]
+[connection signal="pressed" from="brush_size_buttons/6" to="pad/drawing" method="_on_6_pressed"]
+[connection signal="mouse_entered" from="pad/Area2D" to="pad/drawing" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="pad/Area2D" to="pad/drawing" method="_on_area_2d_mouse_exited"]

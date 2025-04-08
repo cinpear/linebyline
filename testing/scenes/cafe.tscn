@@ -1,0 +1,126 @@
+[gd_scene load_steps=16 format=3 uid="uid://owmejpi1sl4b"]
+
+[ext_resource type="Texture2D" uid="uid://c0acqapoa7vhu" path="res://assets/scenes/scene_cafe.PNG" id="1_6eh5t"]
+[ext_resource type="PackedScene" uid="uid://cglxdoudqi3t4" path="res://scenes/gacha_machine.tscn" id="2_0jk87"]
+[ext_resource type="SpriteFrames" uid="uid://c1i0pr1ck01ur" path="res://assets/gacha/gacha_pastry.tres" id="3_jgl0g"]
+[ext_resource type="Texture2D" uid="uid://pvj6kca6lx4i" path="res://assets/gacha/gacha_pastry.PNG" id="4_h3fiy"]
+[ext_resource type="SpriteFrames" uid="uid://nm87knckg7uw" path="res://assets/gacha/gacha_asian.tres" id="5_indtq"]
+[ext_resource type="Texture2D" uid="uid://bj2rhoj8585kd" path="res://assets/gacha/gacha_asian.PNG" id="6_x4apq"]
+[ext_resource type="PackedScene" uid="uid://cncli8jqnn0mk" path="res://scenes/door.tscn" id="7_gpm1m"]
+[ext_resource type="PackedScene" uid="uid://16sqyldc6m83" path="res://scenes/choco_cat.tscn" id="8_yj0u4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uj02j"]
+size = Vector2(571, 283)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ae4sq"]
+size = Vector2(1088, 286)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5wt17"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lrsdj"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_af7rw"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wdkka"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jbx3r"]
+
+[node name="cafe" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 2017.0
+offset_bottom = 1186.0
+color = Color(0.407843, 0.0705882, 0.129412, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(995, 540)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_6eh5t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(472.5, 331.5)
+shape = SubResource("RectangleShape2D_uj02j")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1214, 1050)
+shape = SubResource("RectangleShape2D_ae4sq")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(803, 399, 724, 703, 772, 706, 772, 762, 1885, 765, 1856, 395)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(533, 1014)
+shape = SubResource("WorldBoundaryShape2D_5wt17")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(163, 611)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_lrsdj")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(830, 408)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_af7rw")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1826, 881)
+rotation = 4.71239
+shape = SubResource("WorldBoundaryShape2D_wdkka")
+
+[node name="y sort objects" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="drink" parent="y sort objects" instance=ExtResource("2_0jk87")]
+gacha_type = "drink"
+
+[node name="machine" parent="y sort objects/drink" index="1"]
+offset_left = 187.0
+offset_top = 190.0
+offset_right = 376.0
+offset_bottom = 476.0
+
+[node name="pastry" parent="y sort objects" instance=ExtResource("2_0jk87")]
+gacha_type = "pastry"
+
+[node name="gacha_items" parent="y sort objects/pastry/CanvasLayer" index="2"]
+sprite_frames = ExtResource("3_jgl0g")
+
+[node name="machine" parent="y sort objects/pastry" index="1"]
+offset_left = 377.0
+offset_top = 189.0
+offset_right = 567.0
+offset_bottom = 476.0
+texture_normal = ExtResource("4_h3fiy")
+
+[node name="asian" parent="y sort objects" instance=ExtResource("2_0jk87")]
+gacha_type = "asian"
+
+[node name="gacha_items" parent="y sort objects/asian/CanvasLayer" index="2"]
+sprite_frames = ExtResource("5_indtq")
+
+[node name="machine" parent="y sort objects/asian" index="1"]
+offset_left = 568.0
+offset_top = 190.0
+offset_right = 758.0
+offset_bottom = 477.0
+texture_normal = ExtResource("6_x4apq")
+
+[node name="door_gacha" parent="y sort objects" instance=ExtResource("7_gpm1m")]
+position = Vector2(375, 1001)
+destination_scene = "room"
+destination_door = "gacha"
+
+[node name="AnimatedSprite2D" parent="y sort objects/door_gacha" index="0"]
+sprite_frames = SubResource("SpriteFrames_jbx3r")
+frame_progress = 0.0
+
+[node name="chocoCat" parent="y sort objects" instance=ExtResource("8_yj0u4")]
+position = Vector2(364, 927)
+
+[editable path="y sort objects/drink"]
+[editable path="y sort objects/pastry"]
+[editable path="y sort objects/asian"]
+[editable path="y sort objects/door_gacha"]
+[editable path="y sort objects/door_gacha/interact_detection"]

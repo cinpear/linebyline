@@ -1,0 +1,109 @@
+[gd_scene load_steps=19 format=3 uid="uid://bi7kynaf6mo2b"]
+
+[ext_resource type="Script" path="res://scripts/story_item.gd" id="1_d4kwl"]
+[ext_resource type="Texture2D" uid="uid://dv4h8dij22e7f" path="res://assets/story_items/bag.PNG" id="2_kbth6"]
+[ext_resource type="Texture2D" uid="uid://debs2w4mnd10p" path="res://assets/sparkle.png" id="3_26dcc"]
+[ext_resource type="Texture2D" uid="uid://dc7vnhvi1bbex" path="res://assets/story_items/beret.PNG" id="3_55qb8"]
+[ext_resource type="Texture2D" uid="uid://rn680kawsmuw" path="res://assets/story_items/boba.PNG" id="4_33ma7"]
+[ext_resource type="PackedScene" uid="uid://dupuh8cumos1" path="res://scenes/interact_detection.tscn" id="4_gkruu"]
+[ext_resource type="Texture2D" uid="uid://t0atnvsof1q1" path="res://assets/story_items/cake.PNG" id="5_2xjmc"]
+[ext_resource type="Texture2D" uid="uid://c2bi3rxp6y33j" path="res://assets/story_items/carton.PNG" id="6_vh5v2"]
+[ext_resource type="Texture2D" uid="uid://bru38sk54omt6" path="res://assets/story_items/chips.PNG" id="7_i1246"]
+[ext_resource type="Texture2D" uid="uid://c52kuh8sgfcgb" path="res://assets/story_items/choco.PNG" id="8_sw2n6"]
+[ext_resource type="Texture2D" uid="uid://17f45jb12327" path="res://assets/story_items/doll.PNG" id="9_1ra60"]
+[ext_resource type="Texture2D" uid="uid://tdljxnuhv107" path="res://assets/story_items/flower.PNG" id="10_d68rt"]
+[ext_resource type="Texture2D" uid="uid://bif5p00fct082" path="res://assets/story_items/pudding.PNG" id="11_0aejb"]
+[ext_resource type="Texture2D" uid="uid://bh2b5ft3qmx32" path="res://assets/story_items/stars.PNG" id="12_060s5"]
+[ext_resource type="Texture2D" uid="uid://c3h2yq3slpmu2" path="res://assets/story_items/succulent.PNG" id="13_3q1ji"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8yyxl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_kbth6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_55qb8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_33ma7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2xjmc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vh5v2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_i1246")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_sw2n6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_1ra60")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_d68rt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_0aejb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_060s5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_3q1ji")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tyr83"]
+radius = 158.269
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n1fiw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_26dcc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="story_item" type="CharacterBody2D"]
+position = Vector2(0, -36)
+script = ExtResource("1_d4kwl")
+
+[node name="item" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_8yyxl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tyr83")
+debug_color = Color(0.368447, 0.491695, 0.962354, 0.42)
+
+[node name="sparkles" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="sparkles"]
+position = Vector2(-45, 16)
+sprite_frames = SubResource("SpriteFrames_n1fiw")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="sparkles"]
+position = Vector2(96, -73)
+sprite_frames = SubResource("SpriteFrames_n1fiw")
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="sparkles"]
+position = Vector2(158, 127)
+sprite_frames = SubResource("SpriteFrames_n1fiw")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="interact_detection" parent="." instance=ExtResource("4_gkruu")]
+space_interact = false
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

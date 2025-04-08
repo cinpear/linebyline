@@ -1,0 +1,111 @@
+[gd_scene load_steps=14 format=3 uid="uid://04wq4ofdaufj"]
+
+[ext_resource type="Script" path="res://scripts/collision_shape_2d.gd" id="1_buum1"]
+[ext_resource type="Texture2D" uid="uid://dowg60w8ujktc" path="res://assets/interactKeys.png" id="1_yw3d4"]
+[ext_resource type="Texture2D" uid="uid://b2xujlwm2577t" path="res://assets/littlePrinceNPC.png" id="2_xqd2o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrwte"]
+atlas = ExtResource("2_xqd2o")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8og5f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrwte")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kso5y"]
+size = Vector2(103.976, 63.0125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpvsx"]
+atlas = ExtResource("1_yw3d4")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqg51"]
+atlas = ExtResource("1_yw3d4")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8iam5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpvsx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqg51")
+}],
+"loop": true,
+"name": &"click",
+"speed": 2.5
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rd1e"]
+atlas = ExtResource("1_yw3d4")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppt68"]
+atlas = ExtResource("1_yw3d4")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5t81p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rd1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppt68")
+}],
+"loop": true,
+"name": &"click",
+"speed": 2.5
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_38utx"]
+radius = 246.895
+
+[node name="npc" type="CharacterBody2D"]
+position = Vector2(82, -171)
+script = ExtResource("1_buum1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.90735e-06, -2)
+rotation = 0.00703092
+sprite_frames = SubResource("SpriteFrames_8og5f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-29.9722, 83.5494)
+rotation = 0.00703092
+shape = SubResource("RectangleShape2D_kso5y")
+
+[node name="prompts" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-10, -207)
+
+[node name="interact keys (space)" type="AnimatedSprite2D" parent="prompts"]
+position = Vector2(-74, 0)
+sprite_frames = SubResource("SpriteFrames_8iam5")
+animation = &"click"
+autoplay = "click"
+frame_progress = 0.39855
+
+[node name="interact keys (click)" type="AnimatedSprite2D" parent="prompts"]
+position = Vector2(81, 0)
+sprite_frames = SubResource("SpriteFrames_5t81p")
+animation = &"click"
+autoplay = "click"
+frame_progress = 0.439259
+
+[node name="proximity detection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="proximity detection"]
+position = Vector2(-21, 0)
+shape = SubResource("CircleShape2D_38utx")
+
+[connection signal="body_entered" from="proximity detection" to="." method="_on_proximity_detection_body_entered"]
+[connection signal="body_exited" from="proximity detection" to="." method="_on_proximity_detection_body_exited"]

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgfbftoenrbfg"]
+
+[ext_resource type="PackedScene" uid="uid://16sqyldc6m83" path="res://scenes/choco_cat.tscn" id="1_t1ctw"]
+[ext_resource type="Script" path="res://scripts/bus.gd" id="1_y18ht"]
+[ext_resource type="Texture2D" uid="uid://camxhqc3sqy5y" path="res://assets/scenes/scene_bus.PNG" id="2_2uxq8"]
+[ext_resource type="PackedScene" uid="uid://04wq4ofdaufj" path="res://scenes/npc.tscn" id="3_0olt2"]
+
+[node name="bus" type="Node2D"]
+position = Vector2(973, 718)
+script = ExtResource("1_y18ht")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -1055.0
+offset_top = -803.0
+offset_right = 1047.0
+offset_bottom = 471.0
+color = Color(0.407843, 0.0705882, 0.129412, 1)
+
+[node name="base" type="Sprite2D" parent="."]
+position = Vector2(0, -168)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_2uxq8")
+
+[node name="chocoCat" parent="." instance=ExtResource("1_t1ctw")]
+position = Vector2(-249, 44)
+
+[node name="npc" parent="." instance=ExtResource("3_0olt2")]
+position = Vector2(77, -117)

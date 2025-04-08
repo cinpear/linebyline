@@ -1,0 +1,42 @@
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://djebdjk8yvpi7"]
+
+[ext_resource type="Texture2D" uid="uid://cyj08xljibtii" path="res://assets/gacha/gacha_drink_agua.PNG" id="1_q2b0v"]
+[ext_resource type="Texture2D" uid="uid://ccutuodw8lkfs" path="res://assets/gacha/gacha_drink_boba.PNG" id="2_0c0ve"]
+[ext_resource type="Texture2D" uid="uid://cence4jmf2io8" path="res://assets/gacha/gacha_drink_cocoa.PNG" id="3_1ow6m"]
+[ext_resource type="Texture2D" uid="uid://cs6djlmrq5vb0" path="res://assets/gacha/gacha_drink_juice.PNG" id="4_vxfca"]
+[ext_resource type="Texture2D" uid="uid://60ktotd5f324" path="res://assets/gacha/gacha_drink_milk.PNG" id="5_d7ipq"]
+[ext_resource type="Texture2D" uid="uid://dymbsy5cc5xo2" path="res://assets/gacha/gacha_drink_shake.PNG" id="6_2mc82"]
+[ext_resource type="Texture2D" uid="uid://bnmtdo0tkkwe2" path="res://assets/gacha/gacha_drink_soda.PNG" id="7_o2uj2"]
+[ext_resource type="Texture2D" uid="uid://8elmucu6iisv" path="res://assets/gacha/gacha_drink_tea.PNG" id="8_i1pa6"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_q2b0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0c0ve")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1ow6m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vxfca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_d7ipq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2mc82")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_o2uj2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_i1pa6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

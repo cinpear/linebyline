@@ -1,0 +1,98 @@
+[gd_scene load_steps=6 format=3 uid="uid://i2sqjiugssaq"]
+
+[ext_resource type="Script" path="res://scripts/camera.gd" id="1_jotvi"]
+[ext_resource type="Texture2D" uid="uid://3h74il2ttjgb" path="res://assets/ui/camera_no_outline.PNG" id="2_u8g8r"]
+[ext_resource type="Texture2D" uid="uid://bcwdrddhvojp4" path="res://assets/sketchbook/sketch_check.PNG" id="3_oir1t"]
+
+[sub_resource type="GDScript" id="GDScript_rvnkk"]
+script/source = "extends Area2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_body_entered(body: Node2D) -> void:
+	print(\"enter\")
+	pass # Replace with function body.
+
+
+func _on_body_exited(body: Node2D) -> void:
+	print(\"exit\")
+	pass # Replace with function body.
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bwbfc"]
+size = Vector2(1435, 797)
+
+[node name="camera" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_jotvi")
+
+[node name="open" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -155.0
+offset_top = 32.0
+offset_right = -27.0
+offset_bottom = 160.0
+grow_horizontal = 0
+focus_mode = 0
+texture_normal = ExtResource("2_u8g8r")
+
+[node name="layout" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="take_photo" type="TextureButton" parent="layout"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 1626.0
+offset_top = 439.0
+offset_right = 1798.0
+offset_bottom = 611.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("3_oir1t")
+stretch_mode = 0
+
+[node name="Area2D" type="Area2D" parent="layout"]
+position = Vector2(-13, -2)
+script = SubResource("GDScript_rvnkk")
+
+[node name="Area2D" type="CollisionShape2D" parent="layout/Area2D"]
+position = Vector2(875, 535)
+shape = SubResource("RectangleShape2D_bwbfc")
+
+[node name="ReferenceRect" type="ReferenceRect" parent="layout/Area2D"]
+offset_left = 162.0
+offset_top = 131.0
+offset_right = 1594.0
+offset_bottom = 932.0
+border_color = Color(0.449216, 0.456211, 0.982103, 1)
+editor_only = false
+
+[connection signal="pressed" from="open" to="." method="_on_open_pressed"]
+[connection signal="pressed" from="layout/take_photo" to="." method="_on_take_photo_pressed"]
+[connection signal="body_entered" from="layout/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="layout/Area2D" to="." method="_on_area_2d_body_exited"]

@@ -1,0 +1,97 @@
+[gd_scene load_steps=12 format=3 uid="uid://dlm48nsdx0322"]
+
+[ext_resource type="Texture2D" uid="uid://cenixvvabcxhu" path="res://assets/scenes/scene_room.PNG" id="1_1wnh7"]
+[ext_resource type="PackedScene" uid="uid://16sqyldc6m83" path="res://scenes/choco_cat.tscn" id="2_pfe0c"]
+[ext_resource type="Texture2D" uid="uid://bndu0c5jyycw4" path="res://assets/scenes/scene_room_beanbag.PNG" id="3_h2ypu"]
+[ext_resource type="PackedScene" uid="uid://cncli8jqnn0mk" path="res://scenes/door.tscn" id="4_kj3si"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_myy8d"]
+size = Vector2(436, 378)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4gfjd"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_i0fnk"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_cfp25"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yw3mq"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dncjh"]
+radius = 102.0
+height = 408.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3x0l2"]
+
+[node name="home" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1981.0
+offset_bottom = 1106.0
+color = Color(0.407843, 0.0705882, 0.129412, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="base" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(995, 540)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_1wnh7")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(1007, 240, 1008, 289, 1003, 300, 1004, 389, 990, 390, 991, 509, 1030, 510, 1030, 495, 1440, 490, 1440, 509, 1480, 510, 1483, 390, 1466, 390, 1465, 293, 1458, 281, 1459, 240, 1424, 238, 1421, 266, 1050, 267, 1049, 240)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(654, 237)
+shape = SubResource("RectangleShape2D_myy8d")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(991, 1005)
+shape = SubResource("WorldBoundaryShape2D_4gfjd")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(461, 637)
+shape = SubResource("WorldBoundaryShape2D_i0fnk")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(996, 334)
+shape = SubResource("WorldBoundaryShape2D_cfp25")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1531, 575)
+shape = SubResource("WorldBoundaryShape2D_yw3mq")
+
+[node name="y sort objects" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="chocoCat" parent="y sort objects" instance=ExtResource("2_pfe0c")]
+position = Vector2(787, 810)
+
+[node name="beanbag" type="StaticBody2D" parent="y sort objects"]
+y_sort_enabled = true
+position = Vector2(1531, 575)
+
+[node name="Sprite2D" type="Sprite2D" parent="y sort objects/beanbag"]
+visible = false
+position = Vector2(-254, 205)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_h2ypu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y sort objects/beanbag"]
+position = Vector2(-263, 242)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_dncjh")
+
+[node name="door_home" parent="y sort objects" instance=ExtResource("4_kj3si")]
+y_sort_enabled = true
+position = Vector2(674, 988)
+destination_scene = "game"
+destination_door = "home"
+
+[node name="AnimatedSprite2D" parent="y sort objects/door_home" index="0"]
+sprite_frames = SubResource("SpriteFrames_3x0l2")
+frame_progress = 0.0
+
+[editable path="y sort objects/door_home"]
+[editable path="y sort objects/door_home/interact_detection"]

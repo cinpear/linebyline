@@ -1,0 +1,42 @@
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://nm87knckg7uw"]
+
+[ext_resource type="Texture2D" uid="uid://dhkjc5s5j6eg4" path="res://assets/gacha/gacha_asian_bao.PNG" id="1_iqny8"]
+[ext_resource type="Texture2D" uid="uid://tefcbsru1hno" path="res://assets/gacha/gacha_asian_dumpling.PNG" id="2_hh4de"]
+[ext_resource type="Texture2D" uid="uid://7tg3mhail1pg" path="res://assets/gacha/gacha_asian_egg.PNG" id="3_seiji"]
+[ext_resource type="Texture2D" uid="uid://bpgirwc3crdu2" path="res://assets/gacha/gacha_asian_noods.PNG" id="4_7lgsj"]
+[ext_resource type="Texture2D" uid="uid://wiikhd1lvsbx" path="res://assets/gacha/gacha_asian_onigiri.PNG" id="5_h178l"]
+[ext_resource type="Texture2D" uid="uid://cxc6jf4fgy4bs" path="res://assets/gacha/gacha_asian_sandwich.PNG" id="6_8iycj"]
+[ext_resource type="Texture2D" uid="uid://v4yvpa6gcoq8" path="res://assets/gacha/gacha_asian_sushi.PNG" id="7_8lc3n"]
+[ext_resource type="Texture2D" uid="uid://0s6wr8vo71n3" path="res://assets/gacha/gacha_asian_tart.PNG" id="8_jofbl"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_iqny8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_hh4de")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_seiji")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7lgsj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_h178l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8iycj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8lc3n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jofbl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
